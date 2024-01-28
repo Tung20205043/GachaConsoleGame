@@ -210,7 +210,8 @@ namespace Hwseseion9 {
             Console.WriteLine("---------------------");
             Console.WriteLine("1. Quay lai tui do");
             Console.WriteLine("2. Nang cap vat pham nay");
-            Console.WriteLine("3. Ban vat pham nay");
+            Console.WriteLine("3. Ghep vat pham nay");
+            Console.WriteLine("4. Ban vat pham nay");
             Console.WriteLine("--- Nhap lua chon: ");
             int userInput;
             while (!int.TryParse(Console.ReadLine(), out userInput)) {
@@ -228,6 +229,45 @@ namespace Hwseseion9 {
                     ViewUpgrade(item);
                     break;
                 case 3:
+                    Console.WriteLine("Chon vat pham de ghep voi vat pham nay");
+                    int userInput2;
+                    while (!int.TryParse(Console.ReadLine(), out userInput2)) {
+                    }
+                    switch (userInput2) {
+                        case 1:
+                            ViewUplevel(item,itemPackage[0]);
+                            break;
+                        case 2:                      
+                            ViewUplevel(item, itemPackage[1]);
+                            break;
+                        case 3:
+                            ViewUplevel(item, itemPackage[2]);
+                            break;
+                        case 4:
+                            ViewUplevel(item, itemPackage[3]);
+                            break;
+                        case 5:
+                            ViewUplevel(item, itemPackage[4]);
+                            break;
+                        case 6:
+                            ViewUplevel(item, itemPackage[5]);
+                            break;
+                        case 7:
+                            ViewUplevel(item, itemPackage[6]);
+                            break;
+                        case 8:
+                            ViewUplevel(item, itemPackage[7]);
+                            break;
+                        case 9:
+                            ViewUplevel(item, itemPackage[8]);
+                            break;
+                        case 10:
+                            ViewUplevel(item, itemPackage[9]);
+                            break;
+                    }
+                    Console.ReadLine();
+                    break;
+                case 4:
                     itemPackage.Remove(item);
                     CurencyManager.PlusGold(item.price);
                     Console.WriteLine($"Ban vat pham thanh cong, ban nhan duoc: {item.price} vang");
@@ -253,6 +293,7 @@ namespace Hwseseion9 {
                 } 
                 else {
                     item.OnUpgradeItem(item.rarity);
+                    item.price = goldSell[(int)item.rarity];
                     Console.WriteLine($"Nang cap thanh cong");
                     Console.WriteLine($"Ban con lai: {CurencyManager.currentGold} vang");
                     Console.WriteLine($"An phim bat ki de quay lai tui do.... ");
@@ -265,6 +306,54 @@ namespace Hwseseion9 {
                 Console.ReadLine();
                 ViewList();
             }
+        }
+        public static void ViewUplevel(Item item1, Item item2) {
+            if (item1.itemType == item2.itemType && item1.rarity == item2.rarity) {
+                itemPackage.Remove(item1);
+                itemPackage.Remove(item2);
+                switch (item1.itemType) {
+                    case ItemType.Bow:
+                        Item newBow = new Bow(item1.level + item2.level, ItemType.Bow, item1.rarity, goldSell[(int)item1.rarity]);
+                        itemPackage.Add(newBow);
+                        PrintNewItem(newBow);
+                        break;
+                    case ItemType.Staff:
+                        Item newStaff = new Bow(item1.level + item2.level, ItemType.Staff, item1.rarity, goldSell[(int)item1.rarity]);
+                        itemPackage.Add(newStaff);
+                        PrintNewItem(newStaff);
+                        break;
+                    case ItemType.Armour:
+                        Item newArmour = new Bow(item1.level + item2.level, ItemType.Armour, item1.rarity, goldSell[(int)item1.rarity]);
+                        itemPackage.Add(newArmour);
+                        PrintNewItem(newArmour);
+                        break;
+                    case ItemType.Sword:
+                        Item newSword = new Bow(item1.level + item2.level, ItemType.Sword, item1.rarity, goldSell[(int)item1.rarity]);
+                        itemPackage.Add(newSword);
+                        PrintNewItem(newSword);
+                        break;
+                }
+                
+            } 
+            else {
+                Console.WriteLine("2 vat pham khong co cung loai hoac do hiem");
+                Console.WriteLine($"An phim bat ki de quay lai.... ");
+                Console.ReadLine();
+                ShowInformation(item1);
+                }
+            }
+        public static void PrintNewItem(Item item) {
+            Console.WriteLine("=============== Chuc mung=================");
+            Console.WriteLine("Nang cap vat pham thanh cong, ban nhan duoc: ");
+            Console.WriteLine("-----------------");
+            Console.WriteLine($"Vat pham: {item.itemType} ");
+            Console.WriteLine($"Do hiem: {item.rarity}");
+            Console.WriteLine($"Cap do hien tai: {item.level}/10");
+            Console.WriteLine($"Gia ban: {item.price}$ ");
+            Console.WriteLine("-----------------");
+            Console.WriteLine($"An phim bat ki de quay lai tui do.... ");
+            Console.ReadLine();
+            ViewList();
         }
     }
 }
