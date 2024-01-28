@@ -1,0 +1,7 @@
+D:\C#\Hwseseion9\Hwseseion9\bin\Debug\Hwseseion9.exe.config
+D:\C#\Hwseseion9\Hwseseion9\bin\Debug\Hwseseion9.exe
+D:\C#\Hwseseion9\Hwseseion9\bin\Debug\Hwseseion9.pdb
+D:\C#\Hwseseion9\Hwseseion9\obj\Debug\Hwseseion9.csproj.AssemblyReference.cache
+D:\C#\Hwseseion9\Hwseseion9\obj\Debug\Hwseseion9.csproj.CoreCompileInputs.cache
+D:\C#\Hwseseion9\Hwseseion9\obj\Debug\Hwseseion9.exe
+D:\C#\Hwseseion9\Hwseseion9\obj\Debug\Hwseseion9.pdb
